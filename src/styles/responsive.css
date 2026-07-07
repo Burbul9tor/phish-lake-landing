@@ -1,0 +1,222 @@
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow,
+  .line,
+  .risk-list i,
+  .donut-chart,
+  .widget-timer span.active::before {
+    animation: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .glass-surface {
+    grid-template-columns: auto auto;
+    gap: 12px;
+  }
+
+  .nav-links {
+    grid-column: 1 / -1;
+    order: 3;
+    justify-content: flex-start;
+    gap: 22px;
+    overflow-x: auto;
+    padding: 6px 2px 4px;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .language-switcher {
+    justify-self: end;
+  }
+
+  .header-actions {
+    justify-self: end;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .interface-showcase {
+    order: 2;
+    width: min(100%, 650px);
+    height: 680px;
+    margin: 0 auto;
+  }
+
+  .metric-widget {
+    --x: 22px;
+    --active-x: 22px;
+  }
+
+  .risk-widget {
+    --x: 18px;
+    --active-x: 8px;
+  }
+
+  .improvement-widget {
+    --x: 362px;
+    --active-x: 340px;
+  }
+
+  .timeline-widget {
+    --x: 222px;
+    --active-x: 70px;
+  }
+
+  .widget-timer {
+    right: 168px;
+    left: 180px;
+    top: 648px;
+  }
+
+  .hero-copy {
+    order: 1;
+  }
+
+  .problem-section {
+    margin-top: -42px;
+    padding: 104px 18px 96px;
+  }
+
+  .problem-heading {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .problem-heading h2,
+  .problem-heading > p:last-child {
+    grid-column: 1;
+  }
+
+  .problem-heading > p:last-child {
+    max-width: 760px;
+    margin-top: 20px;
+    font-size: 19px;
+    line-height: 31px;
+  }
+
+  .problem-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .attack-scenario {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 24px;
+  }
+
+  .scenario-heading {
+    position: static;
+  }
+}
+
+@media (max-width: 1100px) and (min-width: 901px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 38px;
+  }
+
+  .interface-showcase {
+    width: min(100%, 820px);
+    height: 680px;
+  }
+
+  .widget-timer {
+    right: 220px;
+    left: 240px;
+    top: 648px;
+  }
+
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    top: 12px;
+    padding: 0 12px;
+  }
+
+  .glass-surface {
+    height: auto;
+    min-height: var(--navbar-height);
+    padding: 10px;
+  }
+
+  .brand {
+    min-width: 0;
+  }
+
+  .brand-logo {
+    width: 102px;
+    height: auto;
+  }
+
+  .demo-button {
+    display: none;
+  }
+
+  .language-switcher button {
+    min-width: 34px;
+  }
+
+  .hero-section {
+    align-items: start;
+    padding: 128px 14px 56px;
+  }
+
+  h1 {
+    font-size: 38px;
+  }
+
+  .hero-subtitle {
+    margin-top: 26px;
+    font-size: 18px;
+    line-height: 32px;
+  }
+
+  .interface-showcase {
+    height: 520px;
+    transform: scale(0.78);
+    transform-origin: top center;
+  }
+
+  .widget-timer {
+    right: 116px;
+    left: 116px;
+    top: 500px;
+  }
+
+  .problem-section {
+    margin-top: -32px;
+    padding: 88px 14px 84px;
+  }
+
+  .problem-heading h2 {
+    font-size: 30px;
+    line-height: 1.18;
+  }
+
+  .problem-heading > p:last-child {
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  .problem-card {
+    min-height: 0;
+    padding: 20px;
+  }
+
+  .attack-scenario {
+    padding: 20px;
+  }
+
+  .scenario-timeline li {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding-left: 18px;
+  }
+}
