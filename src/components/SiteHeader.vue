@@ -8,6 +8,10 @@ defineProps({
     type: String,
     required: true,
   },
+  homeHref: {
+    type: String,
+    required: true,
+  },
   navItems: {
     type: Array,
     required: true,
@@ -18,7 +22,7 @@ defineProps({
   },
 });
 
-defineEmits(['change-locale']);
+defineEmits(['change-locale', 'navigate-section']);
 
 const isMenuOpen = ref(false);
 
@@ -38,11 +42,22 @@ onBeforeUnmount(() => {
 <template>
   <header class="site-header" aria-label="Primary navigation">
     <div class="glass-surface">
-      <a class="brand" href="#solution" aria-label="Phish Lake home">
+      <a
+        class="brand"
+        :href="homeHref"
+        aria-label="Phish Lake home"
+        @click.prevent="$emit('navigate-section', 'solution')"
+      >
         <img class="brand-logo" src="/logo-area.svg" alt="PhishLake" />
       </a>
 
-      <NavLinks :items="navItems" @navigate="closeMenu" />
+      <NavLinks
+        :items="navItems"
+        @navigate="(item) => {
+          closeMenu();
+          $emit('navigate-section', item.sectionId);
+        }"
+      />
 
       <div class="header-actions">
         <LanguageSwitcher :active-locale="locale" @change-locale="$emit('change-locale', $event)" />
@@ -62,7 +77,13 @@ onBeforeUnmount(() => {
       </div>
 
       <div id="mobile-menu" class="mobile-menu" :class="{ open: isMenuOpen }">
-        <NavLinks :items="navItems" @navigate="closeMenu" />
+        <NavLinks
+          :items="navItems"
+          @navigate="(item) => {
+            closeMenu();
+            $emit('navigate-section', item.sectionId);
+          }"
+        />
         <a class="mobile-demo-button" href="mailto:demo@phishlake.example" @click="closeMenu">
           {{ ctaLabel }}
         </a>

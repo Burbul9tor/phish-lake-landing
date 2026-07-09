@@ -9,7 +9,6 @@ defineProps({
 });
 
 const activeIndex = ref(0);
-const hoveredIndex = ref(null);
 let rotationTimer;
 const rotationDuration = 4200;
 
@@ -20,7 +19,11 @@ const cards = [
   { id: 'timeline', className: 'timeline-widget' },
 ];
 
-const visibleIndex = computed(() => hoveredIndex.value ?? activeIndex.value);
+const visibleIndex = computed(() => activeIndex.value);
+
+const setActiveIndex = (index) => {
+  activeIndex.value = index;
+};
 
 const parseFormattedNumber = (value) => {
   const source = String(value);
@@ -121,9 +124,8 @@ onBeforeUnmount(() => {
       class="floating-widget"
       :class="[card.className, { active: visibleIndex === index }]"
       type="button"
-      @focus="activeIndex = index"
-      @mouseenter="hoveredIndex = index"
-      @mouseleave="hoveredIndex = null"
+      @click="setActiveIndex(index)"
+      @focus="setActiveIndex(index)"
     >
       <template v-if="card.id === 'metric'">
         <div class="metric-icon" aria-hidden="true">↕</div>
@@ -222,12 +224,16 @@ onBeforeUnmount(() => {
       </template>
     </button>
 
-    <div class="widget-timer" aria-hidden="true">
-      <span
+    <div class="widget-timer" :aria-label="content.timerLabel">
+      <button
         v-for="(card, index) in cards"
         :key="`${card.id}-${visibleIndex}`"
+        type="button"
         :class="{ active: visibleIndex === index }"
-      ></span>
+        @click="setActiveIndex(index)"
+      >
+        <span class="sr-only">{{ content.cardLabels[card.id] }}</span>
+      </button>
     </div>
   </div>
 </template>

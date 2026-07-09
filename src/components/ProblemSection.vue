@@ -45,23 +45,20 @@ onBeforeUnmount(() => {
         <article v-for="(card, index) in content.cards" :key="card.title" class="problem-card">
           <div class="problem-illustration" :class="`illustration-${index + 1}`" aria-hidden="true">
             <svg v-if="index === 0" viewBox="0 0 220 150" role="img">
-              <path d="M36 54 110 16l74 38-74 38-74-38Z" />
-              <path d="M36 54v18l74 38 74-38V54" />
-              <path d="M48 82v15l62 32 62-32V82" />
-              <path d="M61 106v14l49 25 49-25v-14" />
-              <path d="M82 54c4-13 17-22 31-21 17 1 31 12 34 27" />
-              <path d="M78 62h69" />
-              <path d="M86 72h52" />
+              <rect x="30" y="26" width="160" height="98" rx="14" />
+              <path d="M30 43h160" />
+              <path d="M48 66h70" />
+              <path d="M48 82h54" />
+              <path d="M48 98h82" />
+              <rect x="134" y="62" width="38" height="38" rx="10" />
+              <path d="M48 112h42" />
             </svg>
             <svg v-else-if="index === 1" viewBox="0 0 220 150" role="img">
-              <path d="M82 25 122 5l40 20v48l-40 21-40-21V25Z" />
-              <path d="M82 25l40 22 40-22" />
-              <path d="M42 70 84 48l42 22v58l-42 22-42-22V70Z" />
-              <path d="M42 70l42 23 42-23" />
-              <path d="M126 83 168 61l42 22v45l-42 22-42-22V83Z" />
-              <path d="M126 83l42 23 42-23" />
-              <path d="M84 119h42" />
-              <path d="M122 47v47" />
+              <rect x="34" y="36" width="152" height="86" rx="16" />
+              <path d="M34 54 110 91l76-37" />
+              <path d="M34 104 84 78" />
+              <path d="M186 104 136 78" />
+              <path d="M58 114h104" />
             </svg>
             <svg v-else viewBox="0 0 220 150" role="img">
               <path d="M48 118 166 58l28 14-118 60-28-14Z" />

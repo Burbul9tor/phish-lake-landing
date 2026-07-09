@@ -1,9 +1,9 @@
 const sectionHrefs = {
-  solution: '#solution',
-  how: '#how',
-  features: '#features',
-  audience: '#audience',
-  start: '#start',
+  solution: 'solution',
+  how: 'how',
+  features: 'features',
+  audience: 'audience',
+  start: 'start',
 };
 
 const interfaceNumbers = {
@@ -43,12 +43,19 @@ export const messages = {
     },
     hero: {
       badge: 'Первый фишинг-симулятор в Казахстане',
-      titleStart: 'Узнайте, кто нажмёт на фишинговое письмо раньше ',
-      titleAccent: 'злоумышленников',
+      titleBrand: 'PhishLake',
+      titleRest: 'платформа для фишинг-симуляций и обучения сотрудников',
       subtitle:
-        'Автоматически проводите фишинговые симуляции, измеряйте человеческий риск и обучайте сотрудников до реальной атаки.',
+        'Запускайте контролируемые атаки, измеряйте человеческий риск и показывайте руководству, как снижается уязвимость команды.',
       interface: {
         ariaLabel: 'Элементы интерфейса PhishLake',
+        timerLabel: 'Переключить виджет интерфейса',
+        cardLabels: {
+          metric: 'Клики по ссылкам',
+          risk: 'Распределение уровня риска',
+          improvement: 'Улучшение сотрудников',
+          timeline: 'Динамика риска организации',
+        },
         metric: {
           label: 'Клики по ссылкам',
           value: interfaceNumbers.metric.value,
@@ -149,12 +156,19 @@ export const messages = {
     },
     hero: {
       badge: 'Қазақстандағы алғашқы фишинг симуляторы',
-      titleStart: 'Фишинг хатына кім басатынын шабуылдаушылардан бұрын ',
-      titleAccent: 'біліңіз',
+      titleBrand: 'PhishLake',
+      titleRest: 'қызметкерлерді фишинг симуляциялары арқылы тексеріп, оқытатын платформа',
       subtitle:
-        'Фишинг симуляцияларын автоматты түрде өткізіп, адам тәуекелін өлшеңіз және қызметкерлерді нақты шабуылға дейін оқытыңыз.',
+        'Бақыланатын шабуылдарды іске қосыңыз, адам тәуекелін өлшеңіз және команда осалдығы қалай төмендейтінін басшылыққа көрсетіңіз.',
       interface: {
         ariaLabel: 'PhishLake интерфейс элементтері',
+        timerLabel: 'Интерфейс виджетін ауыстыру',
+        cardLabels: {
+          metric: 'Сілтемелерге кликтер',
+          risk: 'Тәуекел деңгейінің таралуы',
+          improvement: 'Қызметкерлердің жақсаруы',
+          timeline: 'Ұйым тәуекелінің динамикасы',
+        },
         metric: {
           label: 'Сілтемелерге кликтер',
           value: interfaceNumbers.metric.value,
@@ -255,12 +269,19 @@ export const messages = {
     },
     hero: {
       badge: 'The first phishing simulator in Kazakhstan',
-      titleStart: 'Know who will click a phishing email before ',
-      titleAccent: 'attackers do',
+      titleBrand: 'PhishLake',
+      titleRest: 'is a phishing simulation platform for employee training',
       subtitle:
-        'Run phishing simulations automatically, measure human risk, and train employees before a real attack.',
+        'Run controlled simulations, measure human risk, and prove security awareness is improving.',
       interface: {
         ariaLabel: 'PhishLake interface elements',
+        timerLabel: 'Switch interface widget',
+        cardLabels: {
+          metric: 'Link clicks',
+          risk: 'Risk level distribution',
+          improvement: 'Employee improvement',
+          timeline: 'Organization risk dynamics',
+        },
         metric: {
           label: 'Link clicks',
           value: interfaceNumbers.metric.value,

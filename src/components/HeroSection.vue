@@ -24,10 +24,9 @@ defineProps({
 
     <div class="hero-content">
       <div class="hero-copy">
-        <p class="hero-badge">{{ content.badge }}</p>
         <h1 id="hero-title">
-          <span>{{ content.titleStart }}</span>
-          <span class="accent-text">{{ content.titleAccent }}</span>
+          <span class="brand-text">{{ content.titleBrand }}</span>
+          <span class="title-rest">{{ content.titleRest }}</span>
         </h1>
         <p class="hero-subtitle">{{ content.subtitle }}</p>
       </div>
