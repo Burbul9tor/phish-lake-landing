@@ -1,5 +1,6 @@
 .hero-section {
   position: relative;
+  isolation: isolate;
   display: grid;
   align-items: start;
   padding: 184px 20px 104px;
@@ -7,6 +8,7 @@
 
 .hero-background {
   position: absolute;
+  z-index: 0;
   inset: 0 0 -180px;
   overflow: hidden;
   background: #0b0b0c;
@@ -14,15 +16,17 @@
 
 .hero-background::after {
   position: absolute;
+  z-index: 2;
   inset: 0;
   background:
-    radial-gradient(circle at 50% 56%, rgba(255, 75, 22, 0.065), transparent 42%),
-    linear-gradient(180deg, rgba(11, 11, 12, 0.1) 0%, rgba(11, 11, 12, 0.72) 72%, #0b0b0c 100%);
+    radial-gradient(circle at 50% 56%, rgba(255, 75, 22, 0.035), transparent 46%),
+    linear-gradient(180deg, rgba(11, 11, 12, 0.02) 0%, rgba(11, 11, 12, 0.28) 72%, #0b0b0c 100%);
   content: "";
 }
 
 .hero-glow {
   position: absolute;
+  z-index: 0;
   border-radius: 999px;
   filter: blur(72px);
   opacity: 0.48;
@@ -121,6 +125,20 @@ h1 {
   justify-items: center;
   width: min(100%, 1140px);
   text-align: center;
+}
+
+.cursor-signal-field {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: -18px;
+  left: 0;
+  width: 100%;
+  height: min(680px, 68%);
+  opacity: 0.34;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  transform: translate3d(0, 6%, 0);
 }
 
 h1 span {

@@ -11,7 +11,7 @@ defineEmits(['navigate']);
 
 <template>
   <nav class="nav-links" aria-label="Sections">
-    <a v-for="item in items" :key="item.href" :href="item.href" @click.prevent="$emit('navigate', item)">
+    <a v-for="item in items" :key="`${item.label}-${item.href}`" :href="item.href" @click.prevent="$emit('navigate', item)">
       {{ item.label }}
     </a>
   </nav>

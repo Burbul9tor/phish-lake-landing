@@ -179,7 +179,7 @@ onBeforeUnmount(() => {
           <strong :key="`same-${visibleIndex}`">
             <CountUpNumber :value="content.improvement.same.value" />
           </strong>
-          <em>—</em>
+          <em>-</em>
         </div>
         <div class="improvement-row">
           <span>{{ content.improvement.increased.label }}</span>

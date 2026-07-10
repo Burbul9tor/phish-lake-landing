@@ -1,8 +1,9 @@
 const sectionHrefs = {
-  solution: 'solution',
+  solution: 'workflow',
   how: 'how',
   features: 'features',
   audience: 'audience',
+  faq: 'faq',
   start: 'start',
 };
 
@@ -38,6 +39,7 @@ export const messages = {
         { label: 'Как работает', href: sectionHrefs.how },
         { label: 'Возможности', href: sectionHrefs.features },
         { label: 'Кому полезно', href: sectionHrefs.audience },
+        { label: 'FAQ', href: sectionHrefs.faq },
         { label: 'Как начать', href: sectionHrefs.start },
       ],
     },
@@ -151,6 +153,7 @@ export const messages = {
         { label: 'Қалай жұмыс істейді', href: sectionHrefs.how },
         { label: 'Мүмкіндіктер', href: sectionHrefs.features },
         { label: 'Кімге пайдалы', href: sectionHrefs.audience },
+        { label: 'FAQ', href: sectionHrefs.faq },
         { label: 'Қалай бастау', href: sectionHrefs.start },
       ],
     },
@@ -264,6 +267,7 @@ export const messages = {
         { label: 'How it works', href: sectionHrefs.how },
         { label: 'Features', href: sectionHrefs.features },
         { label: 'Who benefits', href: sectionHrefs.audience },
+        { label: 'FAQ', href: sectionHrefs.faq },
         { label: 'How to start', href: sectionHrefs.start },
       ],
     },

@@ -1,0 +1,192 @@
+.audience-section {
+  position: relative;
+  padding: 118px 20px 132px;
+  overflow: hidden;
+  background: #0b0b0c;
+}
+
+.audience-section::before {
+  position: absolute;
+  inset: 8% -14% 10%;
+  background:
+    radial-gradient(ellipse at 22% 34%, rgba(166, 73, 45, 0.12), transparent 40%),
+    radial-gradient(ellipse at 78% 54%, rgba(84, 111, 134, 0.1), transparent 44%),
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.032) 1px, transparent 1px);
+  background-size: auto, auto, 110px 110px, 110px 110px;
+  content: "";
+  mask-image: radial-gradient(ellipse at 50% 48%, #000 0%, transparent 76%);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.audience-shell {
+  position: relative;
+  z-index: 1;
+  width: min(var(--container-width), 100%);
+  margin: 0 auto;
+}
+
+.audience-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(420px, 0.96fr);
+  gap: clamp(44px, 7vw, 112px);
+  align-items: center;
+  margin-bottom: 64px;
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 720ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 720ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.audience-section.visible .audience-heading {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.audience-heading h2 {
+  max-width: 620px;
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(32px, 3vw, 44px);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: 0;
+}
+
+.audience-heading p {
+  max-width: 640px;
+  margin: 0;
+  color: var(--Text-Muted, #a0a0a0);
+  font-size: clamp(16px, 1.25vw, 18px);
+  font-weight: 500;
+  line-height: 1.62;
+}
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.audience-card {
+  position: relative;
+  display: grid;
+  min-height: 360px;
+  align-content: space-between;
+  overflow: hidden;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.095);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(28, 29, 34, 0.9), rgba(13, 14, 17, 0.96)),
+    #111216;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.26);
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    opacity 680ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 680ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.audience-card::before {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(166, 73, 45, 0.14), transparent 34%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.035), transparent 42%);
+  content: "";
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.audience-card-1,
+.audience-card-2,
+.audience-card-3 {
+  grid-column: span 2;
+}
+
+.audience-card-4,
+.audience-card-5 {
+  grid-column: span 3;
+  min-height: 320px;
+}
+
+.audience-section.visible .audience-card {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--audience-index) * 70ms);
+}
+
+.audience-card:hover {
+  border-color: rgba(166, 73, 45, 0.54);
+  box-shadow:
+    0 34px 90px rgba(0, 0, 0, 0.34),
+    0 0 42px rgba(166, 73, 45, 0.055);
+  transform: translateY(-4px);
+}
+
+.audience-number,
+.audience-role,
+.audience-card ul {
+  position: relative;
+  z-index: 1;
+}
+
+.audience-number {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 56px;
+  color: rgba(166, 73, 45, 0.95);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.audience-role h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(34px, 3.4vw, 54px);
+  font-weight: 560;
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.audience-role p {
+  margin: 14px 0 0;
+  color: rgba(246, 247, 248, 0.64);
+  font-size: 16px;
+  font-weight: 560;
+  line-height: 24px;
+}
+
+.audience-card ul {
+  display: grid;
+  gap: 10px;
+  margin: 34px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.audience-card li {
+  position: relative;
+  padding-left: 18px;
+  color: rgba(246, 247, 248, 0.72);
+  font-size: 14px;
+  font-weight: 460;
+  line-height: 22px;
+}
+
+.audience-card li::before {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(166, 73, 45, 0.9);
+  content: "";
+}

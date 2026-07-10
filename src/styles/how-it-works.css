@@ -16,7 +16,7 @@
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(360px, 0.86fr);
   gap: clamp(40px, 8vw, 124px);
-  align-items: start;
+  align-items: center;
   margin-bottom: 72px;
   opacity: 0;
   transform: translateY(28px);
@@ -55,12 +55,17 @@
 }
 
 .how-showcase {
+  --showcase-copy-inset: clamp(24px, 4vw, 52px);
+
   position: sticky;
   top: 104px;
   height: clamp(660px, calc(100vh - 128px), 780px);
-  margin-bottom: 34vh;
+  margin-bottom: 8vh;
   overflow: visible;
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  border-radius: 30px;
   background: #0b0b0c;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.28);
   opacity: 0;
   z-index: calc(var(--step-index) + 1);
   transform: translateY(34px);
@@ -96,6 +101,7 @@
   display: grid;
   max-width: 460px;
   gap: 14px;
+  margin-left: var(--showcase-copy-inset);
   padding: 42px 0 28px;
 }
 
@@ -110,6 +116,7 @@
 
 .how-showcase:nth-child(even) .how-showcase__copy {
   margin-left: auto;
+  margin-right: var(--showcase-copy-inset);
 }
 
 .how-showcase__copy h3 {

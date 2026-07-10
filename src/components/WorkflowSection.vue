@@ -35,7 +35,7 @@ onBeforeUnmount(() => {
 
 <template>
   <section
-    id="features"
+    id="workflow"
     ref="sectionRef"
     class="workflow-section"
     :class="{ visible: isVisible }"

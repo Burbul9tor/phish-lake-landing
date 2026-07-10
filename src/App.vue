@@ -1,12 +1,22 @@
 <script setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watchEffect } from 'vue';
+import AudienceSection from './components/AudienceSection.vue';
+import ComplianceSection from './components/ComplianceSection.vue';
+import FaqSection from './components/FaqSection.vue';
+import FeaturesSection from './components/FeaturesSection.vue';
 import HeroSection from './components/HeroSection.vue';
 import HowItWorksSection from './components/HowItWorksSection.vue';
 import ProblemSection from './components/ProblemSection.vue';
 import SiteHeader from './components/SiteHeader.vue';
+import StartSection from './components/StartSection.vue';
 import WorkflowSection from './components/WorkflowSection.vue';
+import { audienceMessages } from './audienceContent';
+import { complianceMessages } from './complianceContent';
+import { faqMessages } from './faqContent';
+import { featuresMessages } from './featuresContent';
 import { howItWorksMessages } from './howItWorksContent';
 import { messages } from './i18n';
+import { startMessages } from './startContent';
 import { workflowMessages } from './workflowContent';
 
 const locale = ref('ru');
@@ -14,9 +24,14 @@ const isLoading = ref(true);
 const t = computed(() => messages[locale.value]);
 const workflowContent = computed(() => workflowMessages[locale.value]);
 const howItWorksContent = computed(() => howItWorksMessages[locale.value]);
+const featuresContent = computed(() => featuresMessages[locale.value]);
+const complianceContent = computed(() => complianceMessages[locale.value]);
+const audienceContent = computed(() => audienceMessages[locale.value]);
+const faqContent = computed(() => faqMessages[locale.value]);
+const startContent = computed(() => startMessages[locale.value]);
 const supportedLocales = Object.keys(messages);
-const sectionIds = ['solution', 'how', 'features', 'audience', 'start'];
-const scrollableSectionIds = ['solution', 'how', 'features', 'start'];
+const sectionIds = ['solution', 'workflow', 'how', 'features', 'compliance', 'audience', 'faq', 'start'];
+const scrollableSectionIds = ['solution', 'workflow', 'how', 'features', 'compliance', 'audience', 'faq', 'start'];
 
 const getLocalizedPath = (nextLocale, sectionId = 'solution') => {
   const sectionPath = sectionId === 'solution' ? '' : `${sectionId}`;
@@ -157,6 +172,11 @@ onBeforeUnmount(() => {
       <ProblemSection :content="t.problem" />
       <WorkflowSection :content="workflowContent" />
       <HowItWorksSection :content="howItWorksContent" />
+      <FeaturesSection :content="featuresContent" />
+      <ComplianceSection :content="complianceContent" />
+      <AudienceSection :content="audienceContent" />
+      <FaqSection :content="faqContent" />
+      <StartSection :content="startContent" />
     </main>
   </div>
 </template>

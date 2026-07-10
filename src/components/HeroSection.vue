@@ -1,4 +1,5 @@
 <script setup>
+import CursorSignalField from './CursorSignalField.vue';
 import InterfaceShowcase from './InterfaceShowcase.vue';
 
 defineProps({
@@ -15,6 +16,7 @@ defineProps({
       <div class="hero-glow glow-one"></div>
       <div class="hero-glow glow-two"></div>
       <div class="hero-glow glow-three"></div>
+      <CursorSignalField />
       <div class="grid-layer"></div>
       <div class="scan-line scan-line-one"></div>
       <div class="scan-line scan-line-two"></div>

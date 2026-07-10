@@ -35,7 +35,7 @@ onBeforeUnmount(() => {
 
 <template>
   <section
-    id="start"
+    id="how"
     ref="sectionRef"
     class="how-section"
     :class="{ visible: isVisible }"
@@ -141,9 +141,9 @@ onBeforeUnmount(() => {
                     </div>
                   </div>
                   <div class="training-list">
-                    <div><span></span><b>Алексей П.</b><em>{{ content.recreated.training.statuses[0] }}</em></div>
-                    <div><span></span><b>Иван К.</b><em>{{ content.recreated.training.statuses[1] }}</em></div>
-                    <div><span></span><b>Елена С.</b><em>{{ content.recreated.training.statuses[2] }}</em></div>
+                    <div><span></span><b>Айдана С.</b><em>{{ content.recreated.training.statuses[0] }}</em></div>
+                    <div><span></span><b>Нурсултан К.</b><em>{{ content.recreated.training.statuses[1] }}</em></div>
+                    <div><span></span><b>Аружан Т.</b><em>{{ content.recreated.training.statuses[2] }}</em></div>
                   </div>
                 </div>
               </template>
