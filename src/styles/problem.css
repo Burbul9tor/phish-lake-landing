@@ -1,11 +1,25 @@
 .problem-section {
   position: relative;
-  margin-top: -56px;
-  padding: 140px 20px 128px;
-  background: #0b0b0c;
+  margin-top: -112px;
+  padding: 196px 20px 128px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(11, 11, 12, 0) 0%, #0b0b0c 118px),
+    #0b0b0c;
+}
+
+.problem-section::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 180px;
+  background: linear-gradient(180deg, rgba(11, 11, 12, 0), #0b0b0c 78%);
+  content: "";
+  pointer-events: none;
 }
 
 .problem-shell {
+  position: relative;
+  z-index: 1;
   width: min(var(--container-width), 100%);
   margin: 0 auto;
 }

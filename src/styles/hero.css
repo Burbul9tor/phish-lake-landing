@@ -9,7 +9,7 @@
 .hero-background {
   position: absolute;
   z-index: 0;
-  inset: 0 0 -180px;
+  inset: 0 0 -260px;
   overflow: hidden;
   background: #0b0b0c;
 }
@@ -19,8 +19,7 @@
   z-index: 2;
   inset: 0;
   background:
-    radial-gradient(circle at 50% 56%, rgba(255, 75, 22, 0.035), transparent 46%),
-    linear-gradient(180deg, rgba(11, 11, 12, 0.02) 0%, rgba(11, 11, 12, 0.28) 72%, #0b0b0c 100%);
+    linear-gradient(180deg, rgba(11, 11, 12, 0.01) 0%, rgba(11, 11, 12, 0.1) 70%, rgba(11, 11, 12, 0.72) 100%);
   content: "";
 }
 
@@ -29,7 +28,7 @@
   z-index: 0;
   border-radius: 999px;
   filter: blur(72px);
-  opacity: 0.48;
+  opacity: 0.28;
   mix-blend-mode: screen;
   will-change: transform, opacity;
   animation: glow-drift 12s ease-in-out infinite;
@@ -40,7 +39,7 @@
   bottom: 16%;
   width: 430px;
   height: 210px;
-  background: rgba(255, 75, 22, 0.36);
+  background: rgba(74, 145, 255, 0.12);
 }
 
 .glow-two {
@@ -48,7 +47,7 @@
   top: 24%;
   width: 520px;
   height: 260px;
-  background: rgba(255, 113, 56, 0.16);
+  background: rgba(84, 111, 134, 0.12);
   animation-delay: -4s;
 }
 
@@ -99,46 +98,44 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
-  gap: 36px;
+  grid-template-columns: minmax(420px, 0.86fr) minmax(620px, 1fr);
+  gap: clamp(36px, 5.4vw, 84px);
+  align-items: center;
+  justify-items: stretch;
   width: min(var(--container-width), 100%);
   margin: 0 auto;
 }
 
 h1 {
-  width: min(100%, 1120px);
-  max-width: 1120px;
+  width: min(100%, 760px);
+  max-width: 760px;
   margin: 0;
   color: var(--Text-Primary, #fff);
   font-family: "Inter Variable", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 52px;
+  font-size: clamp(42px, 4.1vw, 60px);
   font-style: normal;
   font-weight: 600;
   letter-spacing: 0;
   line-height: normal;
-  text-align: center;
+  text-align: left;
 }
 
 .hero-copy {
   display: grid;
-  justify-items: center;
-  width: min(100%, 1140px);
-  text-align: center;
+  justify-items: start;
+  width: min(100%, 760px);
+  text-align: left;
 }
 
 .cursor-signal-field {
   position: absolute;
   z-index: 1;
-  right: 0;
-  bottom: -18px;
-  left: 0;
+  inset: 0;
   width: 100%;
-  height: min(680px, 68%);
-  opacity: 0.34;
+  height: 100%;
+  opacity: 0.66;
   mix-blend-mode: screen;
   pointer-events: none;
-  transform: translate3d(0, 6%, 0);
 }
 
 h1 span {
@@ -154,7 +151,7 @@ h1 span {
 }
 
 .hero-subtitle {
-  max-width: 900px;
+  max-width: 640px;
   margin: 18px 0 0;
   color: var(--Text-Muted, #a0a0a0);
   font-family: "Inter Variable", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -162,6 +159,13 @@ h1 span {
   font-style: normal;
   font-weight: 500;
   line-height: 42px;
-  text-align: center;
+  text-align: left;
+}
+
+.hero-content .interface-showcase {
+  width: min(100%, 760px);
+  height: 690px;
+  justify-self: end;
+  transform: translateX(26px);
 }
 

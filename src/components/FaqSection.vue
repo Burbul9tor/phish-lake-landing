@@ -9,7 +9,7 @@ defineProps({
 });
 
 const sectionRef = ref(null);
-const openIndex = ref(0);
+const openIndex = ref(-1);
 const isVisible = ref(false);
 let observer;
 
