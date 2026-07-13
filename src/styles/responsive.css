@@ -405,17 +405,17 @@
 
   .hero-section {
     align-items: start;
-    padding: 128px 14px 56px;
+    padding: 124px 14px 52px;
   }
 
   h1 {
-    font-size: 38px;
+    font-size: 30px;
   }
 
   .hero-subtitle {
-    margin-top: 26px;
-    font-size: 18px;
-    line-height: 32px;
+    margin-top: 22px;
+    font-size: 16px;
+    line-height: 28px;
   }
 
   .interface-showcase {
@@ -425,8 +425,8 @@
   }
 
   .hero-content .interface-showcase {
-    height: 600px;
-    transform: scale(0.78);
+    height: 570px;
+    transform: scale(0.74);
     transform-origin: top center;
   }
 

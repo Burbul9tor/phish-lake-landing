@@ -1,0 +1,41 @@
+:root {
+  --site-background: #0b0b0c;
+}
+
+html,
+body,
+.page-shell,
+main {
+  background: var(--site-background);
+}
+
+.hero-section,
+.problem-section,
+.workflow-section,
+.how-section,
+.features-section,
+.compliance-section,
+.audience-section,
+.faq-section,
+.start-section {
+  background: transparent;
+}
+
+.problem-section::before,
+.workflow-section::before,
+.how-section::before,
+.features-section::before,
+.compliance-section::before,
+.audience-section::before,
+.faq-section::before,
+.start-section::before {
+  display: none;
+}
+
+.hero-background {
+  background: transparent;
+}
+
+.hero-background::after {
+  background: linear-gradient(180deg, rgba(11, 11, 12, 0.02) 0%, rgba(11, 11, 12, 0.08) 74%, rgba(11, 11, 12, 0.42) 100%);
+}

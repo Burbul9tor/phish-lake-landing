@@ -26,8 +26,8 @@ const random = (() => {
   };
 })();
 
-const sender = { x: 0.5, y: 0.76 };
-const landing = { x: 0.78, y: 0.24 };
+const sender = { x: 0.58, y: 0.52 };
+const landing = { x: 0.82, y: 0.24 };
 
 const employeeNodes = [
   { x: 0.12, y: 0.24, risk: 0.12 },
@@ -39,11 +39,11 @@ const employeeNodes = [
   { x: 0.7, y: 0.42, risk: 0.32 },
   { x: 0.84, y: 0.3, risk: 0.78 },
   { x: 0.91, y: 0.48, risk: 0.24 },
-  { x: 0.18, y: 0.58, risk: 0.44 },
-  { x: 0.46, y: 0.56, risk: 0.16 },
-  { x: 0.74, y: 0.62, risk: 0.58 },
-  { x: 0.36, y: 0.72, risk: 0.36 },
-  { x: 0.6, y: 0.68, risk: 0.48 },
+  { x: 0.18, y: 0.55, risk: 0.44 },
+  { x: 0.46, y: 0.58, risk: 0.16 },
+  { x: 0.74, y: 0.58, risk: 0.58 },
+  { x: 0.34, y: 0.66, risk: 0.36 },
+  { x: 0.62, y: 0.64, risk: 0.48 },
 ];
 
 const buildEvents = () => {
