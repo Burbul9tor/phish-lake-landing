@@ -6,7 +6,7 @@ defineProps({
   },
 });
 
-defineEmits(['navigate-section']);
+defineEmits(['navigate-section', 'request-demo']);
 </script>
 
 <template>
@@ -51,7 +51,7 @@ defineEmits(['navigate-section']);
       <div class="footer-contact">
         <h2>{{ content.contactsTitle }}</h2>
         <a href="mailto:demo@phishlake.example">{{ content.email }}</a>
-        <a class="footer-demo" href="mailto:demo@phishlake.example">{{ content.demo }}</a>
+        <button class="footer-demo" type="button" @click="$emit('request-demo')">{{ content.demo }}</button>
       </div>
 
       <div class="footer-bottom">

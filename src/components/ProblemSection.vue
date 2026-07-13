@@ -34,7 +34,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section id="how" class="problem-section" aria-labelledby="problem-title">
+  <section id="problem" class="problem-section" aria-labelledby="problem-title">
     <div class="problem-shell">
       <div class="problem-heading">
         <h2 id="problem-title">{{ content.title }}</h2>

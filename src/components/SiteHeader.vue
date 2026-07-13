@@ -16,18 +16,27 @@ defineProps({
     type: Array,
     required: true,
   },
+  activeSectionId: {
+    type: String,
+    default: '',
+  },
   ctaLabel: {
     type: String,
     required: true,
   },
 });
 
-defineEmits(['change-locale', 'navigate-section']);
+const emit = defineEmits(['change-locale', 'navigate-section', 'request-demo']);
 
 const isMenuOpen = ref(false);
 
 const closeMenu = () => {
   isMenuOpen.value = false;
+};
+
+const requestDemo = () => {
+  closeMenu();
+  emit('request-demo');
 };
 
 watch(isMenuOpen, (isOpen) => {
@@ -53,6 +62,7 @@ onBeforeUnmount(() => {
 
       <NavLinks
         :items="navItems"
+        :active-section-id="activeSectionId"
         @navigate="(item) => {
           closeMenu();
           $emit('navigate-section', item.sectionId);
@@ -61,7 +71,7 @@ onBeforeUnmount(() => {
 
       <div class="header-actions">
         <LanguageSwitcher :active-locale="locale" @change-locale="$emit('change-locale', $event)" />
-        <a class="demo-button" href="mailto:demo@phishlake.example">{{ ctaLabel }}</a>
+        <button class="demo-button" type="button" @click="requestDemo">{{ ctaLabel }}</button>
         <button
           class="menu-toggle"
           type="button"
@@ -79,14 +89,15 @@ onBeforeUnmount(() => {
       <div id="mobile-menu" class="mobile-menu" :class="{ open: isMenuOpen }">
         <NavLinks
           :items="navItems"
+          :active-section-id="activeSectionId"
           @navigate="(item) => {
             closeMenu();
             $emit('navigate-section', item.sectionId);
           }"
         />
-        <a class="mobile-demo-button" href="mailto:demo@phishlake.example" @click="closeMenu">
+        <button class="mobile-demo-button" type="button" @click="requestDemo">
           {{ ctaLabel }}
-        </a>
+        </button>
       </div>
     </div>
   </header>

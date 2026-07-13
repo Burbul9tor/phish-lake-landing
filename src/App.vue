@@ -2,6 +2,7 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watchEffect } from 'vue';
 import AudienceSection from './components/AudienceSection.vue';
 import ComplianceSection from './components/ComplianceSection.vue';
+import DemoRequestModal from './components/DemoRequestModal.vue';
 import DemoSection from './components/DemoSection.vue';
 import FaqSection from './components/FaqSection.vue';
 import FeaturesSection from './components/FeaturesSection.vue';
@@ -14,6 +15,7 @@ import StartSection from './components/StartSection.vue';
 import WorkflowSection from './components/WorkflowSection.vue';
 import { audienceMessages } from './audienceContent';
 import { complianceMessages } from './complianceContent';
+import { demoFormMessages } from './demoFormContent';
 import { demoMessages } from './demoContent';
 import { faqMessages } from './faqContent';
 import { featuresMessages } from './featuresContent';
@@ -25,6 +27,8 @@ import { workflowMessages } from './workflowContent';
 
 const locale = ref('ru');
 const isLoading = ref(true);
+const activeSectionId = ref('solution');
+const isDemoFormOpen = ref(false);
 const t = computed(() => messages[locale.value]);
 const workflowContent = computed(() => workflowMessages[locale.value]);
 const howItWorksContent = computed(() => howItWorksMessages[locale.value]);
@@ -34,6 +38,7 @@ const audienceContent = computed(() => audienceMessages[locale.value]);
 const faqContent = computed(() => faqMessages[locale.value]);
 const startContent = computed(() => startMessages[locale.value]);
 const demoContent = computed(() => demoMessages[locale.value]);
+const demoFormContent = computed(() => demoFormMessages[locale.value]);
 const footerContent = computed(() => footerMessages[locale.value]);
 const supportedLocales = Object.keys(messages);
 const sectionIds = [
@@ -97,6 +102,45 @@ const getCurrentSection = () => {
   return getSectionFromPath() ?? getSectionFromHash() ?? 'solution';
 };
 
+const updateActiveSection = () => {
+  const markerY = window.innerHeight * 0.34;
+  const candidates = scrollableSectionIds
+    .map((sectionId) => {
+      const element = document.getElementById(sectionId);
+
+      if (!element) {
+        return null;
+      }
+
+      const rect = element.getBoundingClientRect();
+
+      return {
+        sectionId,
+        distance: Math.abs(rect.top - markerY),
+        isCurrent: rect.top <= markerY && rect.bottom > markerY,
+      };
+    })
+    .filter(Boolean);
+
+  const current = candidates.find((candidate) => candidate.isCurrent);
+  const closest = candidates.sort((first, second) => first.distance - second.distance)[0];
+
+  activeSectionId.value = (current ?? closest)?.sectionId ?? 'solution';
+};
+
+let scrollRaf = 0;
+
+const handleScroll = () => {
+  if (scrollRaf) {
+    return;
+  }
+
+  scrollRaf = window.requestAnimationFrame(() => {
+    updateActiveSection();
+    scrollRaf = 0;
+  });
+};
+
 const getLocalizedUrl = (nextLocale, sectionId = getCurrentSection()) => {
   return `${getLocalizedPath(nextLocale, sectionId)}${window.location.search}`;
 };
@@ -114,6 +158,8 @@ const scrollToSection = async (sectionId) => {
   if (!scrollableSectionIds.includes(sectionId)) {
     return;
   }
+
+  activeSectionId.value = sectionId;
 
   await nextTick();
 
@@ -138,12 +184,22 @@ const setLocale = (nextLocale) => {
 };
 
 const navigateToSection = (sectionId) => {
+  activeSectionId.value = sectionId;
   syncUrl(locale.value, sectionId);
   scrollToSection(sectionId);
 };
 
+const openDemoForm = () => {
+  isDemoFormOpen.value = true;
+};
+
+const closeDemoForm = () => {
+  isDemoFormOpen.value = false;
+};
+
 const handlePopState = () => {
   locale.value = getLocaleFromPath() ?? 'ru';
+  activeSectionId.value = getCurrentSection();
   scrollToSection(getCurrentSection());
 };
 
@@ -160,8 +216,12 @@ onMounted(() => {
   }
 
   syncUrl(locale.value, sectionId, 'replaceState');
+  activeSectionId.value = sectionId;
   window.addEventListener('popstate', handlePopState);
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener('resize', handleScroll);
   scrollToSection(sectionId);
+  updateActiveSection();
 
   window.setTimeout(() => {
     isLoading.value = false;
@@ -170,6 +230,12 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   window.removeEventListener('popstate', handlePopState);
+  window.removeEventListener('scroll', handleScroll);
+  window.removeEventListener('resize', handleScroll);
+
+  if (scrollRaf) {
+    window.cancelAnimationFrame(scrollRaf);
+  }
 });
 </script>
 
@@ -190,8 +256,10 @@ onBeforeUnmount(() => {
       :home-href="homeHref"
       :locale="locale"
       :nav-items="navItems"
+      :active-section-id="activeSectionId"
       @change-locale="setLocale"
       @navigate-section="navigateToSection"
+      @request-demo="openDemoForm"
     />
     <main>
       <HeroSection :content="t.hero" />
@@ -202,9 +270,14 @@ onBeforeUnmount(() => {
       <ComplianceSection :content="complianceContent" />
       <AudienceSection :content="audienceContent" />
       <StartSection :content="startContent" />
+      <DemoSection :content="demoContent" @request-demo="openDemoForm" />
       <FaqSection :content="faqContent" />
-      <DemoSection :content="demoContent" />
     </main>
-    <SiteFooter :content="footerContent" @navigate-section="navigateToSection" />
+    <SiteFooter
+      :content="footerContent"
+      @navigate-section="navigateToSection"
+      @request-demo="openDemoForm"
+    />
+    <DemoRequestModal :content="demoFormContent" :is-open="isDemoFormOpen" @close="closeDemoForm" />
   </div>
 </template>

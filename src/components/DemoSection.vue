@@ -9,6 +9,8 @@ defineProps({
   },
 });
 
+defineEmits(['request-demo']);
+
 const sectionRef = ref(null);
 const isVisible = ref(false);
 let observer;
@@ -55,9 +57,9 @@ onBeforeUnmount(() => {
         <p>{{ content.subtitle }}</p>
       </div>
 
-      <a class="demo-cta" href="mailto:demo@phishlake.example">
+      <button class="demo-cta" type="button" @click="$emit('request-demo')">
         {{ content.cta }}
-      </a>
+      </button>
     </div>
   </section>
 </template>
