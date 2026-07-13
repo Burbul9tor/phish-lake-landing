@@ -12,6 +12,18 @@ const sectionRef = ref(null);
 const isVisible = ref(false);
 let observer;
 
+const riskPeople = [
+  { name: 'Елена С.', eventIndex: 0, risk: '+18 risk', avatar: '/avatars/elena.png' },
+  { name: 'Иван К.', eventIndex: 1, risk: '+42 risk', avatar: '/avatars/ivan.png' },
+  { name: 'Мария Н.', eventIndex: 2, risk: '+6 risk', avatar: '/avatars/maria.png' },
+];
+
+const trainingPeople = [
+  { name: 'Айдана С.', statusIndex: 0, statusClass: 'assigned', avatar: '/avatars/nursultan.png' },
+  { name: 'Нурсултан К.', statusIndex: 1, statusClass: 'progress', avatar: '/avatars/aidana.png' },
+  { name: 'Аружан Т.', statusIndex: 2, statusClass: 'done', avatar: '/avatars/aruzhan-real.png' },
+];
+
 onMounted(() => {
   observer = new IntersectionObserver(
     ([entry]) => {
@@ -123,9 +135,14 @@ onBeforeUnmount(() => {
                     <span style="--h: 28%"></span>
                   </div>
                   <ul>
-                    <li><b>Елена С.</b><span>{{ content.recreated.risk.events[0] }}</span><em>+18 risk</em></li>
-                    <li><b>Иван К.</b><span>{{ content.recreated.risk.events[1] }}</span><em>+42 risk</em></li>
-                    <li><b>Мария Н.</b><span>{{ content.recreated.risk.events[2] }}</span><em>+6 risk</em></li>
+                    <li v-for="person in riskPeople" :key="person.name">
+                      <span class="person-avatar" aria-hidden="true">
+                        <img :src="person.avatar" alt="" loading="lazy" />
+                      </span>
+                      <b>{{ person.name }}</b>
+                      <span class="risk-event-text">{{ content.recreated.risk.events[person.eventIndex] }}</span>
+                      <em>{{ person.risk }}</em>
+                    </li>
                   </ul>
                 </div>
               </template>
@@ -141,9 +158,17 @@ onBeforeUnmount(() => {
                     </div>
                   </div>
                   <div class="training-list">
-                    <div><span></span><b>Айдана С.</b><em>{{ content.recreated.training.statuses[0] }}</em></div>
-                    <div><span></span><b>Нурсултан К.</b><em>{{ content.recreated.training.statuses[1] }}</em></div>
-                    <div><span></span><b>Аружан Т.</b><em>{{ content.recreated.training.statuses[2] }}</em></div>
+                    <div
+                      v-for="person in trainingPeople"
+                      :key="person.name"
+                      :class="`training-status-${person.statusClass}`"
+                    >
+                      <span class="person-avatar" aria-hidden="true">
+                        <img :src="person.avatar" alt="" loading="lazy" />
+                      </span>
+                      <b>{{ person.name }}</b>
+                      <em>{{ content.recreated.training.statuses[person.statusIndex] }}</em>
+                    </div>
                   </div>
                 </div>
               </template>

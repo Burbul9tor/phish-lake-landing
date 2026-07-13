@@ -9,6 +9,7 @@ defineProps({
 });
 
 const activeIndex = ref(0);
+const rotationCycle = ref(0);
 let rotationTimer;
 const rotationDuration = 4200;
 
@@ -21,8 +22,20 @@ const cards = [
 
 const visibleIndex = computed(() => activeIndex.value);
 
+const scheduleNextRotation = () => {
+  window.clearTimeout(rotationTimer);
+
+  rotationTimer = window.setTimeout(() => {
+    activeIndex.value = (activeIndex.value + 1) % cards.length;
+    rotationCycle.value += 1;
+    scheduleNextRotation();
+  }, rotationDuration);
+};
+
 const setActiveIndex = (index) => {
   activeIndex.value = index;
+  rotationCycle.value += 1;
+  scheduleNextRotation();
 };
 
 const parseFormattedNumber = (value) => {
@@ -106,13 +119,11 @@ const CountUpNumber = defineComponent({
 });
 
 onMounted(() => {
-  rotationTimer = window.setInterval(() => {
-    activeIndex.value = (activeIndex.value + 1) % cards.length;
-  }, rotationDuration);
+  scheduleNextRotation();
 });
 
 onBeforeUnmount(() => {
-  window.clearInterval(rotationTimer);
+  window.clearTimeout(rotationTimer);
 });
 </script>
 
@@ -227,7 +238,7 @@ onBeforeUnmount(() => {
     <div class="widget-timer" :aria-label="content.timerLabel">
       <button
         v-for="(card, index) in cards"
-        :key="`${card.id}-${visibleIndex}`"
+        :key="`${card.id}-${visibleIndex}-${rotationCycle}`"
         type="button"
         :class="{ active: visibleIndex === index }"
         @click="setActiveIndex(index)"
