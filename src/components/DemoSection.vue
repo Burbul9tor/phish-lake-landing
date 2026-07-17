@@ -50,9 +50,6 @@ onBeforeUnmount(() => {
 
     <div class="demo-shell">
       <div class="demo-heading">
-        <span class="demo-logo-mark" aria-label="PhishLake">
-          <img src="/logo-area.svg" alt="" />
-        </span>
         <h2 id="demo-title">{{ content.title }}</h2>
         <p>{{ content.subtitle }}</p>
       </div>

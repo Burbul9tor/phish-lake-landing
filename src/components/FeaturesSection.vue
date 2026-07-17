@@ -120,7 +120,6 @@ onBeforeUnmount(() => {
           </div>
 
           <div class="feature-copy">
-            <span>{{ index + 1 }}</span>
             <h3>{{ item.title }}</h3>
             <p>{{ item.text }}</p>
           </div>

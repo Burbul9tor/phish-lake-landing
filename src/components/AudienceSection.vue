@@ -55,7 +55,6 @@ onBeforeUnmount(() => {
           :class="`audience-card-${index + 1}`"
           :style="{ '--audience-index': index }"
         >
-          <span class="audience-number">{{ String(index + 1).padStart(2, '0') }}</span>
           <div class="audience-role">
             <h3>{{ item.role }}</h3>
             <p>{{ item.focus }}</p>

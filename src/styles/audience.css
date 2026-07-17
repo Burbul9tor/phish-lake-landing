@@ -129,21 +129,10 @@
   transform: translateY(-4px);
 }
 
-.audience-number,
 .audience-role,
 .audience-card ul {
   position: relative;
   z-index: 1;
-}
-
-.audience-number {
-  display: inline-flex;
-  width: fit-content;
-  margin-bottom: 56px;
-  color: rgba(166, 73, 45, 0.95);
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 18px;
 }
 
 .audience-role h3 {

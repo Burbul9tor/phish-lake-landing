@@ -119,18 +119,6 @@
   padding: 22px 24px 18px;
 }
 
-.feature-copy span {
-  display: inline-grid;
-  width: 28px;
-  height: 20px;
-  place-items: center;
-  border-radius: 999px;
-  background: rgba(150, 158, 168, 0.14);
-  color: rgba(246, 247, 248, 0.62);
-  font-size: 11px;
-  font-weight: 700;
-}
-
 .feature-copy h3 {
   margin: 0;
   color: #ffffff;

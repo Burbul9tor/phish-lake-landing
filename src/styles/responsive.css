@@ -56,7 +56,6 @@
 
   .menu-toggle {
     display: inline-grid;
-    gap: 4px;
   }
 
   .mobile-menu.open {
@@ -306,22 +305,48 @@
   }
 
   .start-shell {
-    grid-template-columns: 1fr;
-    gap: 34px;
+    width: min(980px, 100%);
   }
 
   .start-heading {
+    grid-template-columns: 1fr;
+    gap: 18px;
     position: relative;
     top: auto;
     max-width: 760px;
     margin-bottom: 44px;
-    text-align: center;
   }
 
   .start-heading p {
     max-width: 680px;
-    margin-right: auto;
-    margin-left: auto;
+  }
+
+  .start-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .start-step,
+  .start-step:nth-child(1),
+  .start-step:nth-child(2),
+  .start-step:nth-child(3),
+  .start-step:nth-child(4),
+  .start-step:nth-child(5) {
+    grid-column: auto;
+    min-height: 224px;
+    border-right: 1px solid rgba(255, 255, 255, 0.075);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+  }
+
+  .start-step:nth-child(2),
+  .start-step:nth-child(4) {
+    border-right: 0;
+  }
+
+  .start-step:nth-child(5) {
+    grid-column: 1 / -1;
+    min-height: 190px;
+    border-right: 0;
+    border-bottom: 0;
   }
 
   .workflow-step {
@@ -391,7 +416,7 @@
   }
 
   .brand-logo {
-    width: 102px;
+    width: 122px;
     height: auto;
   }
 
@@ -405,7 +430,7 @@
 
   .hero-section {
     align-items: start;
-    padding: 124px 14px 52px;
+    padding: 124px 14px 68px;
   }
 
   h1 {
@@ -425,15 +450,16 @@
   }
 
   .hero-content .interface-showcase {
-    height: 570px;
-    transform: scale(0.74);
+    height: 610px;
+    transform: scale(0.7);
     transform-origin: top center;
   }
 
   .widget-timer {
-    right: 92px;
-    left: 92px;
-    top: 570px;
+    right: 128px;
+    left: 128px;
+    top: 636px;
+    gap: 9px;
   }
 
   .problem-section {
@@ -592,10 +618,6 @@
     padding: 24px;
   }
 
-  .audience-number {
-    margin-bottom: 42px;
-  }
-
   .audience-role h3 {
     font-size: 38px;
   }
@@ -644,6 +666,7 @@
   }
 
   .start-heading {
+    gap: 14px;
     margin-bottom: 34px;
   }
 
@@ -658,35 +681,39 @@
 
   .start-steps {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 0;
+    border-radius: 20px;
   }
 
   .start-steps::before {
-    top: 36px;
-    right: auto;
-    bottom: 36px;
-    left: 31px;
-    width: 1px;
-    height: auto;
-    transform: scaleY(0.64);
+    display: none;
   }
 
   .start-section.visible .start-steps::before {
-    transform: scaleY(1);
+    transform: none;
   }
 
-  .start-step {
-    min-height: 150px;
-    padding: 20px;
+  .start-step,
+  .start-step:nth-child(1),
+  .start-step:nth-child(2),
+  .start-step:nth-child(3),
+  .start-step:nth-child(4),
+  .start-step:nth-child(5) {
+    grid-column: auto;
+    min-height: 178px;
+    padding: 22px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.075);
   }
 
   .start-step:nth-child(5) {
-    grid-column: auto;
+    border-bottom: 0;
   }
 
   .start-step-number {
-    width: 38px;
-    height: 38px;
+    width: auto;
+    height: auto;
+    font-size: 38px;
   }
 
   .start-step-copy h3 {
@@ -734,33 +761,36 @@
 
   .how-showcase {
     top: 82px;
-    height: 680px;
+    height: 740px;
     margin-top: 16px;
     margin-bottom: 6vh;
   }
 
   .how-showcase__screen {
-    top: 212px;
+    top: 252px;
     width: min(720px, 100%);
   }
 
   .how-showcase__copy {
+    max-width: calc(100% - 40px);
+    margin-right: 20px;
     padding-top: 18px;
   }
 
   .how-showcase__copy h3 {
-    font-size: 22px;
-    line-height: 28px;
+    font-size: 21px;
+    line-height: 27px;
   }
 
   .how-showcase__copy p {
-    font-size: 15px;
-    line-height: 25px;
+    font-size: 14px;
+    line-height: 23px;
   }
 
   .recreated-ui-onpage {
     min-height: 430px;
     padding: 20px;
+    overflow: hidden;
     transform: scale(0.7);
     transform-origin: top center;
   }
@@ -810,7 +840,62 @@
   }
 
   .risk-ui-events li {
-    grid-template-columns: 1fr;
+    grid-template-columns: 34px minmax(0, 1fr) auto;
+    gap: 8px 10px;
+    padding: 12px;
+  }
+
+  .risk-ui-events .risk-event-text {
+    grid-column: 2 / -1;
+  }
+
+  .risk-ui-events em {
+    justify-self: end;
+    white-space: nowrap;
+  }
+
+  .risk-ui-chart,
+  .risk-ui-events ul {
+    min-height: 0;
+  }
+
+  .risk-ui-chart {
+    height: 128px;
+    padding: 18px;
+  }
+
+  .recreated-ui-risk {
+    max-height: 430px;
+  }
+
+  .recreated-ui-risk .risk-ui-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .recreated-ui-risk .risk-ui-kpi {
+    padding: 10px;
+    border-radius: 12px;
+  }
+
+  .recreated-ui-risk .risk-ui-kpi span,
+  .recreated-ui-risk .risk-ui-kpi em {
+    font-size: 10px;
+  }
+
+  .recreated-ui-risk .risk-ui-kpi strong {
+    margin: 5px 0;
+    font-size: 19px;
+  }
+
+  .recreated-ui-risk .risk-ui-events {
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .recreated-ui-risk .risk-ui-events ul {
+    max-height: 190px;
+    overflow: hidden;
   }
 
   .recreated-stepper {

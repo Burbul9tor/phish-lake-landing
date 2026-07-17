@@ -109,7 +109,7 @@
   z-index: 1;
   display: grid;
   grid-template-columns: minmax(420px, 0.86fr) minmax(620px, 1fr);
-  gap: clamp(24px, 3.2vw, 48px);
+  gap: clamp(0px, 0.8vw, 12px);
   align-items: center;
   justify-items: stretch;
   width: min(var(--container-width), 100%);
@@ -173,10 +173,10 @@ h1 span {
 }
 
 .hero-content .interface-showcase {
-  width: min(100%, 700px);
-  height: 640px;
+  width: min(100%, 650px);
+  height: 590px;
   justify-self: end;
-  transform: translateX(0) scale(0.94);
+  transform: translateX(0) scale(0.88);
   transform-origin: center right;
 }
 

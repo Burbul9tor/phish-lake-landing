@@ -25,7 +25,6 @@ defineEmits(['navigate-section', 'request-demo']);
       </div>
 
       <nav class="footer-nav" :aria-label="content.productTitle">
-        <h2>{{ content.productTitle }}</h2>
         <button
           v-for="link in content.links.product"
           :key="link.sectionId"
@@ -37,7 +36,6 @@ defineEmits(['navigate-section', 'request-demo']);
       </nav>
 
       <nav class="footer-nav" :aria-label="content.companyTitle">
-        <h2>{{ content.companyTitle }}</h2>
         <button
           v-for="link in content.links.company"
           :key="link.sectionId"
@@ -49,8 +47,13 @@ defineEmits(['navigate-section', 'request-demo']);
       </nav>
 
       <div class="footer-contact">
-        <h2>{{ content.contactsTitle }}</h2>
-        <a href="mailto:demo@phishlake.example">{{ content.email }}</a>
+        <a class="footer-email" href="mailto:demo@phishlake.example">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 6.5h16v11H4z" />
+            <path d="m4.5 7 7.5 6 7.5-6" />
+          </svg>
+          <span>{{ content.email }}</span>
+        </a>
         <button class="footer-demo" type="button" @click="$emit('request-demo')">{{ content.demo }}</button>
       </div>
 
